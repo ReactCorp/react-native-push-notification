@@ -60,10 +60,6 @@ public class RNPushNotificationHelper {
     private RNPushNotificationConfig config;
     private final SharedPreferences scheduledNotificationsPersistence;
 
-    private static class Options {
-        public Bitmap largeIconBitmap;
-    }
-
     public RNPushNotificationHelper(Application context) {
         this.context = context;
         this.config = new RNPushNotificationConfig(context);
