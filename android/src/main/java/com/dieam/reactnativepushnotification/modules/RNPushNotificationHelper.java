@@ -196,9 +196,9 @@ public class RNPushNotificationHelper {
 
       RNPushNotificationPicturesAggregator aggregator = new RNPushNotificationPicturesAggregator(new RNPushNotificationPicturesAggregator.Callback() {
         public void call(Bitmap largeIconImage, Bitmap bigPictureImage, Bitmap bigLargeIconImage) {
-          Bitmap largeIcon = largeIconImage
-          if (largeIconCircular) {
-              largeIcon = ImageUtil.createCircularBitmap(largeIconImage)
+          Bitmap largeIcon = largeIconImage;
+          if (largeIconCircular && largeIconImage != null) {
+              largeIcon = ImageUtil.createCircularBitmap(largeIconImage);
           }
           sendToNotificationCentreWithPicture(bundle, largeIcon, bigPictureImage, bigLargeIconImage);
         }
