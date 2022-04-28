@@ -191,11 +191,16 @@ public class RNPushNotificationHelper {
         }
     }
 
-
     public void sendToNotificationCentre(final Bundle bundle) {
+        final boolean largeIconCircular = bundle.getBoolean("largeIconCircular", true);
+
       RNPushNotificationPicturesAggregator aggregator = new RNPushNotificationPicturesAggregator(new RNPushNotificationPicturesAggregator.Callback() {
         public void call(Bitmap largeIconImage, Bitmap bigPictureImage, Bitmap bigLargeIconImage) {
-          sendToNotificationCentreWithPicture(bundle, largeIconImage, bigPictureImage, bigLargeIconImage);
+          Bitmap largeIcon = largeIconImage
+          if (largeIconCircular) {
+              largeIcon = ImageUtil.createCircularBitmap(largeIconImage)
+          }
+          sendToNotificationCentreWithPicture(bundle, largeIcon, bigPictureImage, bigLargeIconImage);
         }
       });
 
